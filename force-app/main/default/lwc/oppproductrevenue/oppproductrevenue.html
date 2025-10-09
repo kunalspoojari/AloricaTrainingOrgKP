@@ -1,0 +1,140 @@
+<template>    
+    <!--lightning-card>
+        
+        <div class="slds-p-around_x-small">
+            <lightning-record-view-form record-id={recordId} object-api-name="SBQQ__QuoteLine__c" column="2"
+                layout="compact">
+                <div class="slds-grid">
+                    <div class="slds-col">
+                        <span>
+                            <lightning-output-field field-name="Headcount__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Payroll_Hours_Billable__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Attrition_Production__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Attrition_Training__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Shrink_offsite__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Shrink_onsite__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="ABAY_Length__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="SBQQ__EffectiveSubscriptionTerm__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Target_Training_Launch_Date__c">
+                            </lightning-output-field>
+                        </span>
+                    </div>
+                    <div class="slds-col">
+                        <span>
+                            <lightning-output-field field-name="Training_Rate__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="FY20_Revenue__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="FY21_Revenue__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Production_Hourly_Rate__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Calculated_Rev_per_FTE_Quantity__c">
+                            </lightning-output-field>                            
+                            <lightning-output-field field-name="First_12_Months_Revenue__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Total_Revenue__c">
+                            </lightning-output-field>
+                    
+
+                           
+                        </span>
+                        
+
+                    </div>
+                </div-->
+                
+                   <!--<p>trainingdate {targetTrainingLaunchDate}</p>--> 
+            
+            <!--/lightning-record-view-form>
+            <div class="loadingSpinner" if:true={isLoadingIndicator}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </br>
+        </br>
+            <div class="gbMainTableContainer col-12">
+                <div class="divbtn">
+                    <lightning-button type="save" label="Save" variant="Neutral" class="slds-m-left_medium"
+                    onclick={createrev} onfocus={onFocusChange}></lightning-button>
+                    <lightning-button label="Refresh Revenue Forecast" variant="brand" class="slds-m-left_medium"
+                    onclick={refreshRevenue}></lightning-button>
+                    <lightning-button label="Delete All" name="openConfirmation"  variant="destructive" class="slds-m-left_medium"
+                    onclick={deleteRecords}></lightning-button>
+                </div>                
+                <table class="slds-table slds-table--bordered slds-table--striped" id="gbMainTable" width="100%">
+                    <thead class="ui-selectable">
+
+                        <tr class="gradientHeader firstHeader">
+
+
+                            <td class="ui-resizable">
+                                <span class="icon-cog gbff">&nbsp;</span><span class="fieldLabel">Month</span>
+                            </td>
+                            <td class="ui-resizable">
+                                <span class="icon-cog gbff">&nbsp;</span><span class="fieldLabel">Quantity/FTE</span>
+                            </td>
+                            <td class="ui-resizable">
+                                <span class="icon-cog gbff">&nbsp;</span><span class="fieldLabel">Monthly Revenue</span>
+                            </td>
+
+                            <td class="ui-resizable">
+                                <span class="icon-cog gbff">&nbsp;</span><span class="fieldLabel">Comments</span>
+                            </td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        <template for:each={monthInfo} for:item="mnData" for:index="index">
+                            <tr key={mnData.id} data-row-index={index}>
+
+
+                                <td class="ui-resizable">
+                                    {mnData.month}
+                                </td>
+                                <td class="ui-resizable">
+                                    <lightning-input type="number" name={index} style="width: 40%;" class="clstd"
+                                        onchange={onHandlechange} value={mnData.quantity} onfocus={onFocusChange} ></lightning-input>
+                                </td>
+                                <td class="ui-resizable">
+                                    <p>
+                                        <lightning-input class="clstd" type="number" formatter="currency" 
+                                            name={index} style="width: 40%;" onchange={onRevenuechange} onfocus={onFocusChange}
+                                            value={mnData.exprevenue}  mode="edit" step="0.01"></lightning-input>
+
+                                    </p>
+                                </td>
+
+                                <td class="ui-resizable">
+                                    <p>
+                                        <lightning-input value={mnData.comment} name={index} onchange={onCommentchange} onfocus={onFocusChange} class="clstd"></lightning-input>
+                                    </p>
+                                </td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </lightning-card>
+    <c-confirmation-dialog title='Delete All'
+                           message='Do you want to Delete all the records for this Quote Line?'
+                           confirm-label='Yes'
+                           cancel-label='No'
+                           visible={isDialogVisible}
+                           original-message={originalMessage}
+                           name="confirmModal"
+                           onclick={deleteRecords}>
+    </c-confirmation-dialog-->
+</template>

@@ -1,0 +1,6 @@
+<!---<apex:page standardController="SBQQ__Quote__c" extensions="QuoteExtController" action="{!onRecall}">
+<apex:pageMessages />
+</apex:page>--->
+<apex:page >
+<apex:pageMessages />
+</apex:page>

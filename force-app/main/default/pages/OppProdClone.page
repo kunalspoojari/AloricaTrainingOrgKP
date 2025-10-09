@@ -1,0 +1,19 @@
+<apex:page standardController="OpportunityLineItem"   extensions="OpportunityCloneController"  lightningStyleSheets="true" >
+
+<apex:form >
+        <apex:pageMessages id="showmsg"  escape="false"></apex:pageMessages>
+        <apex:outputPanel id="dummy"/>
+        <apex:actionFunction name="loadData" action="{!cloneOP}" rerender="showmsg" />
+  </apex:form>
+     <script>
+        window.onload=function()
+        {
+            
+            loadData();
+            sforce.one.editRecord('/{!OpportunityLineItem.Id}')
+            return false;  
+
+        }
+    </script> 
+
+</apex:page>

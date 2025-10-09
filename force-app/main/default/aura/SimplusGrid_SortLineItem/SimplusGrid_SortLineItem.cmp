@@ -1,0 +1,53 @@
+<aura:component controller="SimplusGridController">
+    <aura:attribute type="String" name="parentId" />
+    <aura:attribute type="Object" name="lineItem" />
+    <aura:attribute type="Decimal" name="listIndex" />
+    <aura:attribute name="dragid" type="Integer" />
+    <aura:attribute name="sObjectName" 	type="String" default="Revenue_Forecast__c" />  <!-- default="SBQQ__QuoteLine__c" -->
+
+    <aura:registerEvent name="pushUpdate" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="startLoading" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="drag" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="drop" type="c:SimplusGrid_PushUp"/>
+
+    <tr
+    draggable="true"
+    ondragstart="{!c.dragstart}"
+    data-drag-id="{!v.listIndex}"
+    ondragover="{!c.cancel}" 
+    ondragenter="{!c.cancel}"
+            ondrop="{!c.drop}">
+            <td>
+                <aura:if isTrue="{! !v.lineItem.isGlobal}">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <div class="slds-checkbox">
+                                <input type="checkbox" name="{!v.lineItem.Id}" id="{!v.lineItem.id}" checked="{!v.lineItem.isActive}" value="{!v.lineItem.isActive}" onchange="{!c.toggleButtonClick}"/>
+                                <label class="slds-checkbox__label" for="{!v.lineItem.id}">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <aura:set attribute="else">
+                        <lightning:icon iconName="utility:world" alternativeText="Global" name="Global filter" size="x-small"/>
+                    </aura:set>
+                    <!-- lightning:buttonIcon iconName="{!v.lineItem.isActive ? 'utility:check' : 'utility:steps'}" alternativeText="{!v.lineItem.isActive ? 'Deactivate' : 'Activate'}"  onclick="{!c.toggleButtonClick}"/ -->
+                </aura:if>
+            </td>
+            <td>{!v.lineItem.sortColumnName}</td>
+            <td>{!v.lineItem.sortOrder}</td>
+            <td>{!v.lineItem.sortPriority}</td>
+            <td class="actions">
+                <aura:if isTrue="{!v.lineItem.isGlobal}">
+                    <lightning:helptext content="Global variables cannot be edited or deleted" />
+                    <aura:set attribute="else">
+                        <lightning:buttonIcon iconName="utility:delete"  variant="bare" alternativeText="Delete"  onclick="{!c.deleteButtonClick}"/>
+                    </aura:set>
+                </aura:if>
+            </td>
+    </tr>
+    
+</aura:component>

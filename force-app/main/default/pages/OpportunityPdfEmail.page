@@ -1,0 +1,315 @@
+<!--
+*   @Author: Ariel Tribunal
+*   @Date: 9/30/2019
+*   @Apex Name: OpportunityPdfEmail
+*   @Description: VisualForce page use to display the Opportunity Detail and Opportunity products to be converted to pdf
+*
+*   @History: 11/11/19 ArielT RITM0079963: IT Related to align CPQ
+-->
+<apex:page standardController="Opportunity" extensions="OpportunityPdfEmailController" showHeader="false" sidebar="false" >
+    
+    <apex:variable var="o" value="{!Opportunity}"/>
+    
+    <apex:pageBlock title="Opportunity Name: {!o.Name}">
+        <apex:pageBlockSection title="Opportunity Summary">
+            <apex:outputText label="File Attachments:" rendered="{!ISNULL(FileAttached)==false}"/>
+            <apex:repeat value="{!FileAttached}" var="fa" rendered="{!ISNULL(FileAttached)==false}">
+                <apex:outputText label="" value="{!fa.Title}" id="theValue"/><br/>
+            </apex:repeat>
+            <apex:outputText label="" rendered="{!ISNULL(FileAttached)==false}"/>
+            <apex:outputField value="{!o.Account.Name}"/>
+            <apex:outputField value="{!o.Amount}"/>
+            <apex:outputField label="Opportunity Owner" value="{!o.Owner.Name}"/>
+            <apex:outputField value="{!o.GSTApprover__c}"/>
+            <apex:outputField value="{!o.Name}"/>
+            <apex:outputField value="{!o.IT_Assignee__c}"/>
+            <apex:outputField value="{!o.CloseDate}"/>
+            <apex:outputField value="{!o.WFM_Assignee__c}"/>
+            <br/><!--<apex:outputField value="{!o.StageName}"/>-->
+            <apex:outputField value="{!o.Pricing_Assignee__c}"/>
+            <apex:outputField value="{!o.Probability}"/>
+            <apex:outputField value="{!o.CS_Assignee__c}"/>
+            <apex:outputField value="{!o.Why_did_we_win__c}"/>
+            <apex:outputField value="{!o.ServiceNow_Project_ID__c}"/>
+            <apex:outputField value="{!o.Reason_Lost__c}"/><br/>
+            <apex:outputField value="{!o.Who_did_we_lose_to__c}"/>
+            <br/>
+
+            <apex:outputField value="{!o.Vertical__c}"/>
+            <apex:outputField value="{!o.Deal_Type__c}"/>
+            <apex:outputField value="{!o.Business_Type__c}"/>
+            <br/><apex:outputField value="{!o.Additional_Notes_to_Pricing_Team__c}"/>
+
+            <apex:outputField value="{!o.Description}"/>
+            <apex:outputField value="{!o.Timeline_Risks__c}"/>
+            <apex:outputField value="{!o.Any_Non_Standard_Branding_Requirements__c}"/>
+            <apex:outputField value="{!o.Future_Factors__c}"/>
+            <apex:outputField value="{!o.Deal_Special_Considerations__c}"/>
+            <apex:outputField value="{!o.Resource_Planning__c}"/>
+            <apex:outputField value="{!o.Any_Non_Standard_Workflow_Options_to_Not__c    }"/><br/>
+            <apex:outputField value="{!o.What_are_buyer_s_pain_points_causing_u__c}"/>
+            <apex:outputField value="{!o.Other_pain_points__c}"/>
+            <apex:outputField value="{!o.Win_theme_differentiators_for_response__c}"/>
+            <apex:outputField value="{!o.Other__c}"/>
+            <apex:outputField value="{!o.Does_client_have_a_current_provider__c}"/>
+            <apex:outputField value="{!o.If_yes_where_are_the_current_sites__c}"/>
+            <apex:outputField value="{!o.Also_who_are_we_bidding__c}"/>
+            <br/>
+
+            <apex:outputField value="{!o.Currency__c}"/>
+            <apex:outputField value="{!o.Contract_Term__c}"/>
+            <apex:outputField value="{!o.Physical_Security_requirements__c}"/>
+            <apex:outputField value="{!o.Background_Checks__c}"/>
+            <!--<apex:outputField value="{!o.Physical_Security_Other__c}"/>-->
+            <apex:outputField value="{!o.Additional_Notes_on_Background_Checks__c}"/>
+            <br/>
+
+            <apex:outputField value="{!o.Curriculum_Provider__c}"/>
+            <apex:outputField value="{!o.Background_Check_Client_Specific_Req__c}"/>
+
+            <apex:outputField value="{!o.Competitors_in_Short_List__c}"/>
+            <br/>
+
+            <apex:outputField value="{!o.AT_T_CMF__c}"/>
+            <apex:outputField value="{!o.Sales_Tax_Exempt_Cert__c}"/>
+            <apex:outputField value="{!o.Sales_Tax_Exempt__c}"/>
+            <br/>
+
+            <apex:outputField value="{!o.Renewal_Option__c}"/>
+            <apex:outputField value="{!o.Oracle_Project_Code__c}"/>
+            <apex:outputField value="{!o.Capex_Number__c}"/>
+            <apex:outputField value="{!o.CapexApprovedAmount__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    <apex:repeat var="op" value="{!OppProducts}">
+        <apex:pageBlock title="Opportunity Product: {!op.Name}" >
+            <apex:pageBlockSection title="Summary" >
+                <apex:outputField label="Name" value="{!op.Name}"/>
+                <apex:outputField label="Opportunity" value="{!op.Opportunity.Name}"/>
+                <apex:outputField value="{!op.Primary_Product__c}"/>
+                <apex:outputField label="Product" value="{!op.Product2.Name}"/>
+                <apex:outputField value="{!op.Stage__c}"/>
+                <apex:outputField value="{!op.PrimaryDirectional__c}"/>
+                <apex:outputField value="{!op.Total_Price__c}"/>
+                <apex:outputField value="{!op.Pricing_Model__c}"/>
+                <br/><!--<apex:outputField value="{!op.Opportunity_Stage__c}"/>-->
+                <apex:outputField value="{!op.Other_Billing_Mechanisms_to_model__c}"/><br/>
+                <apex:outputField value="{!op.Additional_Notes_to_Pricing_Team__c}"/><br/>
+                <apex:outputField value="{!op.POS_Approved_Date__c}"/><br/>
+                <apex:outputField value="{!op.Engage_Opportunity_Team__c}"/>
+                <br/>
+
+                <apex:outputField value="{!op.Client_Preferred_Site__c}"/>
+                <apex:outputField value="{!op.Hours_of_Operation__c}"/>
+                <apex:outputField value="{!op.AHT__c}"/>
+                <apex:outputField value="{!op.Training_Length__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                    <apex:outputField value="{!op.Link_to_Agent_Profile__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <br/><apex:outputField value="{!op.Training_Billable__c}"/>
+                <apex:outputField value="{!op.Agent_Profile__c}"/>
+                <apex:outputField value="{!op.Channel_s__c}"/>
+                <apex:outputField value="{!op.Headcount__c}"/>
+                <apex:outputField value="{!op.Language__c}"/>
+                <apex:outputField value="{!op.Estimated_Go_Live_Date__c}"/>
+                <apex:outputField value="{!op.Percentage_Split_for_Multiple_Languages__c}"/>
+                <apex:outputField value="{!op.Geography__c}"/>
+                <apex:outputField value="{!op.Build_type__c}"/>
+                <apex:outputField value="{!op.Billing_Mechanism_Final__c}"/>
+                <apex:outputField value="{!op.Service__c}"/>
+                <apex:outputField value="{!op.Does_this_involve_seasonality__c}"/><br/>
+                <apex:outputField value="{!op.notes_on_Seasonality__c}"/>
+                <br/>
+
+                <apex:outputField value="{!op.X24_7__c}"/>
+                <apex:outputField value="{!op.Time_Zone__c}"/>
+                <apex:outputField value="{!op.Monday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Monday_End_Time__c}"/>
+                <apex:outputField value="{!op.Tuesday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Tuesday_End_Time__c}"/>
+                <apex:outputField value="{!op.Wednesday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Wednesday_End_Time__c}"/>
+                <apex:outputField value="{!op.Thursday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Thursday_End_Time__c}"/>
+                <apex:outputField value="{!op.Friday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Friday_End_Time__c}"/>
+                <apex:outputField value="{!op.Saturday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Saturday_End_Time__c}"/>
+                <apex:outputField value="{!op.Sunday_Start_Time__c}"/>
+                <apex:outputField value="{!op.Sunday_End_Time__c}"/>
+
+                <apex:outputField value="{!op.Operations_Manager_Ratio__c}"/>
+                <apex:outputField value="{!op.Agent_License_Required__c}"/>
+                <apex:outputField value="{!op.Team_Manager_Ratio__c}"/>
+                <apex:outputField value="{!op.Agent_License_Description__c}"/>
+                <apex:outputField value="{!op.QA_Ratio__c}"/>
+                <apex:outputField value="{!op.Negotiated_COLA__c}"/>
+                <apex:outputField value="{!op.QA_Location__c}"/>
+                <apex:outputField value="{!op.Client_Required_Uptraining__c}"/>
+                <apex:outputField value="{!op.Trainer_Ratio__c}"/>
+                <apex:outputField value="{!op.Notes_on_Shared_Positions__c}"/>
+                <apex:outputField value="{!op.Shared_Trainers__c}"/>
+                <apex:outputField value="{!op.Shared_Ops_Manager__c}"/>
+                <apex:outputField value="{!op.Client_Mandated_Operations_Manager_Ratio__c}"/>
+                <apex:outputField value="{!op.Client_mandated_occupancy__c}"/>
+                <apex:outputField value="{!op.Client_Provided_Hiring_Profiles__c}"/>
+                <apex:outputField value="{!op.Proposed_Occupancy__c}"/>
+                <apex:outputField value="{!op.Historical_Call_Arrival_Data__c}"/>
+                <apex:outputField value="{!op.Estimated_Inbound_Volume__c}"/>
+                <apex:outputField value="{!op.ABAY_Length__c}"/>
+                <apex:outputField value="{!op.Estimated_Outbound_Volume__c}"/>
+
+                <apex:outputField value="{!op.Client_Required_AHT_Caps__c}"/>
+                <apex:outputField value="{!op.NonStandard_Build_Out_Requirements__c}"/>
+                <apex:outputField value="{!op.AHT_Cap_Details__c}"/>
+                <apex:outputField value="{!op.Secure_Training_Room_Required__c}"/>
+                <apex:outputField value="{!op.Client_Mandated_Specialized_Positions__c}"/>
+                <apex:outputField value="{!op.Special_Furniture_Required__c}"/>
+                <apex:outputField value="{!op.Notes_on_Specialized_Position__c}"/>
+                <apex:outputField value="{!op.Notes_on_Special_Furniture_Requirements__c}"/>
+                <apex:outputField value="{!op.Additional_Notes_on_Volume__c}"/>
+                <apex:outputField value="{!op.Additional_Agent_Skillset_Notes__c}"/>
+
+                <apex:outputField value="{!op.Target_Production_Go_Live_Date__c}"/>
+                <apex:outputField value="{!op.Target_Training_Launch_Date__c}"/>
+
+                <apex:outputField value="{!op.Initial_ramp_SL_relief_days__c}"/>
+                <apex:outputField value="{!op.expected_travel_budget_ramp__c}"/>
+                <apex:outputField value="{!op.Max_Bonus_Potential__c}"/>
+                <apex:outputField value="{!op.Notes_on_travel_requirements__c}"/>
+                <apex:outputField value="{!op.Max_Penalty_Exposure__c}"/>
+                <apex:outputField value="{!op.Forecast_Detail__c}"/>
+                <apex:outputField value="{!op.Service_Level_Relief_Max_Forecast__c}"/>
+                <apex:outputField value="{!op.Forecast_Types__c}"/>
+                <apex:outputField value="{!op.Are_there_any_graduation_KPIs__c}"/>
+                <apex:outputField value="{!op.Lock_Timeframe_days__c}"/>
+                <apex:outputField value="{!op.Details_on_Graduation_KPIs__c}"/>
+                <apex:outputField value="{!op.Interval_Length_minutes__c}"/>
+                <apex:outputField value="{!op.Volume_Delivery_Allocation__c}"/>
+                <apex:outputField value="{!op.Month_Type__c}"/>
+                <apex:outputField value="{!op.Min_or_Max_Volume_Protection__c}"/>
+                <apex:outputField value="{!op.Forecast_Length_in_Months__c}"/>
+                <apex:outputField value="{!op.Expected_Travel_Budget_Steady_State__c}"/>
+                <apex:outputField value="{!op.percent_of_the_nesting_period_is_sp__c}"/>
+                <apex:outputField value="{!op.Other_Important_Contractual_Elements__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="IT Requirements" >
+                <apex:outputField value="{!op.Desktop_Specifications__c}"/>
+                <!--<apex:outputField value="{!op.Solutions_Required__c}"/>-->
+                <!-- <apex:outputField value="{!op.Monitors__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Alorica_Reporting_Requirements__c}"/>
+                <!--<apex:outputField value="{!op.Applications__c}"/>-->
+                <apex:outputField value="{!op.Other_Performance_Platform_Details__c}"/>
+                <apex:outputField value="{!op.WAH_Requirement__c}"/>
+                <apex:outputField value="{!op.File_Feeds__c}"/>
+                <!--<apex:outputField value="{!op.Circuits_Order_Required__c}"/>-->
+                <apex:outputField value="{!op.Performance_Platforms__c}"/>
+                <!--<apex:outputField value="{!op.Bandwidth_Requirement__c}"/>-->
+                <apex:outputField value="{!op.Logical_Security_Certifications_Requir__c}"/>
+                <apex:outputField value="{!op.Voice_Platform__c}"/>
+                <apex:outputField value="{!op.IT_Secutiry_Audit_Requirements__c}"/>
+                <!-- <apex:outputField value="{!op.Phone_Type__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.IT_Solution_DQM__c}"/>
+                <!-- <apex:outputField value="{!op.Phones_required_in_Training_Room__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.IT_Per_Seat_Capex_Cost__c}"/>
+                <apex:outputField value="{!op.Recording_System__c}"/>
+                <apex:outputField value="{!op.IT_Per_Seat_Opex_Cost__c}"/>
+                <apex:outputField value="{!op.Call_Recording__c}"/>
+                <apex:outputField value="{!op.IT_One_Time_Cost__c}"/>
+                <apex:outputField value="{!op.Call_Recording_Retention_in_days__c}"/>
+                <apex:outputField value="{!op.Automatic_Dialer__c}"/>
+                <apex:outputField value="{!op.Screen_Recording__c}"/>
+                <!-- <<apex:outputField value="{!op.Number_of_New_Production_Workstations__c}"/>RITM0079963 -->
+                <apex:outputField value="{!op.Screen_Recording_Retention_in_days__c}"/>
+                <!-- <apex:outputField value="{!op.Number_Of_Training_Workstations__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Transmit_Recordings_back_to_Client__c}"/>
+                <!-- <apex:outputField value="{!op.Number_of_New_Training_Workstations__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Speech_Analytics__c}"/>
+                <!-- <apex:outputField value="{!op.Number_of_Support_Workstations__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.IVR_Required__c}"/>
+                <!-- <apex:outputField value="{!op.Number_of_New_Support_Workstations__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Call_Back_Assist__c}"/>
+                <!-- <apex:outputField value="{!op.Number_of_New_Training_Rooms__c}"/> RITM0079963 -->
+                <!--<apex:outputField value="{!op.Channels__c}"/>-->
+                <!-- <apex:outputField value="{!op.Seats_per_New_Training_Room__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Workforce__c}"/>
+                <!-- <apex:outputField value="{!op.Need_for_Non_Production_Phones__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Email_Non_Channel__c}"/>
+                <apex:outputField value="{!op.Co_Browse_Required_for_Agent__c}"/>
+                <apex:outputField value="{!op.Nonstandard_Agent_Software_Requirements__c}"/>
+                <apex:outputField value="{!op.Agent_Take_Over_Client_PC_Required__c}"/>
+                <apex:outputField value="{!op.Bandwidth_Requirement_kbps__c}"/>
+                <apex:outputField value="{!op.Other_PreAgent_Call_Treatment_Details__c}"/>
+                <!--<apex:outputField value="{!op.Voice_Circuit_Provider__c}"/>-->
+                <apex:outputField value="{!op.Pre_Agent_Call_Treatment_Required__c}"/>
+                <apex:outputField value="{!op.Voice_Delivery__c}"/>
+                <apex:outputField value="{!op.Predictive_Dialer_Agent_Leg_Voice_Techno__c}"/>
+                <apex:outputField value="{!op.Telephony_numbers__c}"/>
+                <apex:outputField value="{!op.ACD_and_WFM_RTA_Integration_Requirement__c}"/>
+                <apex:outputField value="{!op.Alorica_Applications_Required__c}"/>
+                <apex:outputField value="{!op.CTI_Required__c}"/>
+                <br/><apex:outputField value="{!op.Data_Connectivity__c}"/>
+
+                <apex:outputField value="{!op.Desktop_Other_detail__c}"/>
+                <apex:outputField value="{!op.Other_Solution_details__c}"/>
+                <!-- <apex:outputField value="{!op.Monitor_Other_detail__c}"/> RITM0079963 -->
+                <apex:outputField value="{!op.Other_Reporting_details__c}"/>
+                <apex:outputField value="{!op.If_Client_Add_Location_Data__c}"/>
+                <apex:outputField value="{!op.Other_File_Feed_details__c}"/>
+                <br/><apex:outputField value="{!op.Additional_Build_Out_Cost__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="WFM Requirements" >
+                <apex:outputField value="{!op.Number_of_Production_Workstations__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_Meeting__c}"/>
+                <apex:outputField value="{!op.Offsite_Shrink_PTO_Percentage__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_Lunch__c}"/>
+                <apex:outputField value="{!op.Offsite_Shrink_Sick_Percentage__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_Off_Phone__c}"/>
+                <apex:outputField value="{!op.Offsite_Shrink_Late_Percentage__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_Break__c}"/>
+                <apex:outputField value="{!op.Offsite_Shrink_LOA_Percentage__c}"/>
+                <apex:outputField value="{!op.Primary_responsibility_for_Forecasting__c}"/>
+                <apex:outputField value="{!op.Offsite_Shrink_NCNS_Percentage__c}"/>
+                <apex:outputField value="{!op.Workforce_Suggested_FTE__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_Coaching_Percentage__c}"/>
+                <apex:outputField value="{!op.Workforce_Suggested_Occupancy__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink_CE_Training__c}"/>
+                <apex:outputField value="{!op.Workforce_Suggested_Seat_Utilization__c}"/>
+                <br/><apex:outputField value="{!op.Has_early_ramp_plan_been_developed__c}"/>
+
+                <apex:outputField value="{!op.Training_Rate__c}"/>
+                <!--<apex:outputField value="{!op.Components_of_Billing_Calculation__c}"/>-->
+                <apex:outputField value="{!op.Gross_Profit__c}"/>
+                <apex:outputField value="{!op.Production_Rate_s__c}"/>
+                <!--<apex:outputField value="{!op.Regional_EBITDA__c}"/>-->
+                <apex:outputField value="{!op.Ancilllary_Rate_s__c}"/>
+                <apex:outputField value="{!op.Full_Load_EBITDA__c}"/>
+                <apex:outputField value="{!op.Annualized_Revenue__c}"/>
+                <apex:outputField value="{!op.Occupancy__c}"/>
+                <apex:outputField value="{!op.Attrition_Production__c}"/>
+                <apex:outputField value="{!op.Onsite_Shrink__c}"/>
+                <apex:outputField value="{!op.Attrition_Training__c}"/>
+                <apex:outputField value="{!op.Offline_Shrink__c}"/>
+                <apex:outputField value="{!op.Seat_Utilization__c}"/>
+                <apex:outputField value="{!op.Agent_Wage__c}"/>
+                <apex:outputField value="{!op.Payment_Terms__c}"/>
+                <apex:outputField value="{!op.Incentives__c}"/>
+                <!--<apex:outputField value="{!op.Proposed_Bid_Rate__c}"/>-->
+                <br/>
+                <apex:outputField value="{!op.Team_Lead_Incentives__c}"/>
+                <apex:outputField value="{!op.Yr_1_Revenue__c}"/>
+                <apex:outputField value="{!op.Team_Lead_Salary__c}"/>
+                <apex:outputField value="{!op.Yr_2_Revenue__c}"/>
+                <apex:outputField value="{!op.QA_Wage__c}"/>
+                <apex:outputField value="{!op.Yr_3_Revenue__c}"/>
+                <apex:outputField value="{!op.OM_Salary__c}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:repeat>
+
+</apex:page>

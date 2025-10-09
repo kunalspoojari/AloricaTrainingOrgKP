@@ -1,0 +1,66 @@
+<!-- 
+    Apttus Contract Management
+    SendEmailPreProcess
+     
+    @2016 Apttus Inc. All rights reserved.
+ -->
+<apex:page standardController="Apttus__APTS_Agreement__c" 
+           extensions="SendEmailPreProcessController" >
+    
+    <script type="text/javascript" src="/soap/ajax/30.0/connection.js"></script>
+    <script type="text/javascript" src="/soap/ajax/30.0/apex.js"></script>
+    <apex:include pageName="Apttus__ComplyJSLibInclude" />
+    
+    <script>        
+        var cACTION_SEND_FOR_REVIEW = "Send_To_Other_Party_For_Review";
+        var cACTION_SEND_FOR_SIGNATURES = "Send_To_Other_Party_For_Signatures";     
+        var cERROR_UNKNOWN_ACTION = "{!$Label.apttus__ErrorUnknownAction}";
+                
+        var agreementId =  "{!JSENCODE(agreementId)}";      
+        var userAction = "{!JSENCODE(userAction)}";
+        
+        doPostProcess();         
+                            
+        function initCall() {       
+            try {
+                sforce.connection.sessionId = "{!$Api.Session_ID}"; //to avoid session timeout
+            } catch(e) {
+                erroralert(cERROR_UNKNOWN,e);
+                
+            }           
+        }
+        
+        /**
+         * Callback invoked prior to send email action to perform status change and log activity as a part of URL hack not available from summer16 release.
+         * @param agreementId the id of the agreement object 
+         * @param action initiated by user send to other party for preview/signatures
+         * @return <code>true</code> if the callback was successful, <code>false</code> otherwise
+         */
+        function doPostProcess() {                  
+            try {
+                initCall();
+                
+                // STEP I - delete the temporary email template
+                //deleteEmailTemplate(templateId);
+                
+                // STEP II - write activity history based on action
+                if (cACTION_SEND_FOR_REVIEW == userAction) { 
+                    afterSentForReview(agreementId);
+                
+                } else if (cACTION_SEND_FOR_SIGNATURES == userAction) {                                     
+                    afterSentForSignatures(agreementId);
+                
+                } else {
+                    throw(cERROR_UNKNOWN_ACTION + " " + userAction);
+                }
+                
+            } catch(ex) {
+                erroralert(cERROR_UNKNOWN,ex);
+                
+            } finally {             
+                var sendEmailUrl = '/apex/Apttus__SendEmail?id='+ agreementId + '&action=' + userAction; 
+                navigateTo(sendEmailUrl);           
+            }           
+        }        
+    </script>       
+</apex:page>

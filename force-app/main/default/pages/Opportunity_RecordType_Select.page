@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity" extensions="opporunityRecorTypeSelect_Controller"> 
+   <apex:form > 
+   <apex:pageBlock title="Select Opportunity Record Type" >
+       <apex:pageBlockSection >
+         <apex:selectList value="{!recTypeId}" size="1" label="Record Type of new record" required="true" style="border-left:3px solid #FF0000;" > 
+             <apex:selectOptions value="{!myOptions}">
+         </apex:selectOptions> 
+      </apex:selectList> 
+      </apex:pageBlockSection>
+      <apex:pageBlockButtons >
+       <apex:commandButton value="Continue" Action="{!cont}"/> 
+      <apex:commandButton value="Cancel" Action="{!Cancel}"/>
+       </apex:pageBlockButtons>
+   </apex:pageBlock>
+
+
+   </apex:form> 
+</apex:page>

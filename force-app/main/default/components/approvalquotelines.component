@@ -1,0 +1,48 @@
+<apex:component controller="approvalQuoteLinesController" access="global">
+  <!--apex:attribute name="quote_Id" description="Quote Id" type="Id" assignTo="{!quoteId}"/>
+    <table border="1">
+            <tr>
+                    <th> Product Name </th>
+                    <th> Channel</th>
+                    <th> Site</th>
+                    <th> Agent Profile </th>
+                    <th> Billing Mechanism</th>
+                    <th> List Price </th>
+                    <th> Rate Request </th>
+                    <th> Fully Loaded EBITDA</th>
+                    <th> Agent Headcount</th>
+                    <th> AHT (in seconds)</th> 
+                    <th> Attrition (Production)</th> 
+                    <th> Attrition (Training)</th> 
+                    <th> Seat Utilization</th>
+                    <th> Occupancy</th> 
+                    <th> TL Ratio </th>
+                    <th> Trainer Ratio </th>
+                    <th> QA Ratio </th>
+                    <th> OM Ratio </th> 
+                    
+            </tr>
+            <apex:repeat var="li" value="{!quotelines}">
+                 <tr>
+                    <th> {!li.SBQQ__ProductName__c} </th>
+                    <th> {!li.Channel_s__c} </th>
+                    <th> {!li.Client_Preferred_Site__r.Name} </th>
+                    <th> {!li.Agent_Profile__c} </th>
+                    <th> {!li.Billing_Mechanism_Final__c} </th>
+                    <th> <apex:outputText rendered="{!li.SBQQ__ListPrice__c != 0}" value="{0, Number, Currency}">&nbsp;&nbsp;<apex:param value="{!li.SBQQ__ListPrice__c}" /></apex:outputText>&nbsp;&nbsp; </th> 
+                    <th> <apex:outputText rendered="{!li.Rate_Request__c != null}" value="{0, Number, Currency}">&nbsp;&nbsp;<apex:param value="{!li.Rate_Request__c}" /></apex:outputText> <apex:outputText rendered="{!li.Rate_Request__c == null}"> N/A </apex:outputText>&nbsp;&nbsp;</th> 
+                    <th><apex:outputText value="{0, Number, .00}"><apex:param value="{!li.Fully_Loaded_EBITDA_P__c}" /></apex:outputText>%</th>
+                    <th> {!li.Headcount__c} </th>
+                    <th> {!li.AHT__c} </th> 
+                     <th><apex:outputText value="{0, Number, .00}"> <apex:param value="{!li.Attrition_Production__c}" /></apex:outputText>%</th> 
+                     <th><apex:outputText value="{0, Number, .00}"> <apex:param value="{!li.Attrition_Training__c}" /> </apex:outputText>%</th> 
+                    <th> {!li.Seat_Utilization__c} </th>
+                    <th> {!li.Occupancy__c}%</th>
+                    <th> {!li.Team_Manager_Ratio__c} </th>
+                    <th> {!li.Trainer_Ratio__c} </th>
+                    <th> {!li.QA_Ratio__c} </th>
+                    <th> {!li.Operations_Manager_Ratio__c} </th>
+                </tr>
+            </apex:repeat>
+        </table-->
+</apex:component>

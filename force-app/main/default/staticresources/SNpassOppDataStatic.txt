@@ -1,0 +1,16 @@
+{
+	"u_account_name": "Boingo",
+	"u_capex_approved_amount": "100000.00",
+	"u_capex_number": "123456",
+	"u_circuit_order_required": "true",
+	"u_cs_assignee": "joe@alorica.com",
+	"u_deal_type": "New Logo",
+	"u_description": "Blah blah blah",
+	"u_existing_client_new_site": "true",
+	"u_it_assignee": "anne@alorica.com",
+	"u_opportunity_id": "OPP1234567890",
+	"u_opportunity_name": "Boingo Something or other",
+	"u_target_production_go_live_date": "11/1/2019",
+	"u_target_training_launch_date": "10/1/2019",
+	"u_vertical": "blah"
+}

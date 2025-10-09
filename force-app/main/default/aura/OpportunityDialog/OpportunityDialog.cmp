@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName,lightning:actionOverride,lightning:hasPageReference,lightning:isUrlAddressable" access="global" >
+	<aura:handler name="render" value="{!this}" action="{!c.doInit}"/>
+      <lightning:listView aura:id="listObjects"
+                        objectApiName="Opportunity"
+                        listName="RecentlyViewedOpportunities"
+                        rows="5"
+                        showSearchBar="true"
+                        showActionBar="true"
+                        enableInlineEdit="true"
+                        showRowLevelActions="true"
+                        />
+</aura:component>

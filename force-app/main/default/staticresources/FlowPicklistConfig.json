@@ -1,0 +1,92 @@
+[ {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Alorica IQ",
+    "optionLabel" : "Alorica IQ",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:story",
+    "description" : "Services delivered by the DBC"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Trust & Safety",
+    "optionLabel" : "Trust & Safety",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:service_crew"
+  } ],
+  "objectName" : "Opportunity",
+  "fieldName" : "Service_Family__c"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Content Moderation",
+    "optionLabel" : "Content Moderation",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:announcement",
+    "description" : "Preventing abuse by moderating users and content based on intent, local context and community guidelines."
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Labeling & Annotation",
+    "optionLabel" : "Labeling & Annotation",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:contract",
+    "description" : "From images and videos to audio and text, content is annotated/labeled for optimized AI algorithms."
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Transcripts & Translations",
+    "optionLabel" : "Transcripts & Translations",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:article",
+    "description" : "Review or convert spoken text or visual information into a regionalized or localized written format."
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Content Enrichment",
+    "optionLabel" : "Content Enrichment",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:insights",
+    "description" : "Content onboarding and enrichment ensuring information is accurate and meets platform guidelines."
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Proactive Fraud Protection",
+    "optionLabel" : "Proactive Fraud Protection",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:steps",
+    "description" : "Review and validate user and content quality, accuracy and authenticity."
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Ratings & Reviews",
+    "optionLabel" : "Ratings & Reviews",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:customer_lifecycle_analytics",
+    "description" : "Ensure the authenticity of user ratings and reviews.\n"
+  } ],
+  "objectName" : "Opportunity",
+  "fieldName" : "Trust_Safety_Service_s__c"
+}, {
+  "picklistValues" : [ {
+    "useIcon" : "true",
+    "optionValue" : "Alorica IQ",
+    "optionLabel" : "Alorica IQ",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:story"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Core Cx",
+    "optionLabel" : "Core Cx",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:customer_360"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Financial Solutions",
+    "optionLabel" : "Financial Solutions",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:partner_fund_request"
+  }, {
+    "useIcon" : "true",
+    "optionValue" : "Trust & Safety",
+    "optionLabel" : "Trust & Safety",
+    "imageUrl" : "https://www.lightningdesignsystem.com/assets/images/logo.svg",
+    "iconName" : "standard:service_crew"
+  } ],
+  "objectName" : "Service__c",
+  "fieldName" : "Service_Line__c"
+} ]

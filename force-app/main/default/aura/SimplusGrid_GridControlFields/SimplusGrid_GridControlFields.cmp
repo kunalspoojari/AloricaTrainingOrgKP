@@ -1,0 +1,77 @@
+<aura:component controller="SimplusGridController">
+    <aura:attribute name="recordId"  type="String"/>
+    <aura:attribute name="fieldSets" type="String" />
+    <aura:attribute type="Object[]" name="fieldsList" />
+    <aura:attribute type="Object[]" name="editableFieldsList" />
+    <aura:attribute type="Boolean" name="hasFields" default="false" />
+    <aura:attribute type="String" name="mainListSource" />
+    <aura:attribute type="Boolean" name="showEdit" default="false"/>
+    <aura:attribute type="Boolean" name="showEditAll" default="false"/>
+    <aura:attribute type="List" name="quoteLineList"/>
+    <aura:attribute type="List" name="quoteList"/>
+    
+    <aura:attribute type="Boolean" name="hasrecs" />
+    <aura:attribute type="Boolean" name="stateTaken" default="false" />
+    
+    <aura:attribute type="Boolean" name="stageDeleteAll" default="false" />
+    <aura:attribute type="Boolean" name="stageReestablish" default="false" />
+    
+   
+    <aura:handler value="{!this}" name="init" action="{!c.init}" />
+    <aura:registerEvent name="pushUpdate" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="pushSave" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="pushCancel" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="pushClone" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="pushRefresh" type="c:SimplusGrid_PushUp"/>
+    <aura:registerEvent name="pushDimensionUpdate" type="c:SimplusGrid_PushUp"/>
+    <!-- <c:SimplusGrid quoteList="{!v.quoteLineList}"/>-->
+
+    <div style="display: flex; margin-bottom: 10px;">
+        <aura:if isTrue="{!v.stageDeleteAll || v.stageReestablish}">
+        	<div style="position: fixed;z-index: 300;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.5);padding-top: 40vh;">
+            	<div style="padding: 20px;background: white;width: 300px;margin: auto;font-weight: 600;font-size: 10pt;">
+                	This will delete all Revenue Forecast records for this Quote Line. Continue?
+                    <br />
+                    <br />
+                    <div style="text-align: center;display: flex;">
+                        <lightning:button label="Proceed" onclick="{!v.stageReestablish ? c.doReestablish : c.doDelete}" variant="destructive" class="button-fixed"/>
+                        <div style="flex: 1;" />
+                        <lightning:button label="Cancel" onclick="{!c.doStageCancel}" variant="bare" />
+                    </div>
+                </div>
+            </div>
+        </aura:if>
+        <div style="flex: 1;" />
+        <aura:iteration items="{!v.fieldsList}" var="fl">
+            <c:SimplusGrid_GridControlFieldLineItem field="{!fl}" />
+        </aura:iteration>
+        <aura:if isTrue="{!v.hasFields}">
+            <div class="button">
+                
+                <!--aura:if isTrue="{!v.showEditAll}">
+                    <lightning:button label="Edit All" onclick="{!c.toggleEditAll}" variant="brand" class="button-fixed"/>
+                </aura:if -->
+                
+                
+                <!-- aura:if isTrue="{!v.showEdit}">
+                    <lightning:button label="Save" onclick="{!c.saveClicked}" variant="brand" class="button-fixed"/>
+                    <lightning:button label="Cancel" onclick="{!c.cancelClicked}" variant="destructive" class="button-fixed"/>
+                    <aura:set attribute="else">
+                        <lightning:button label="Apply" onclick="{!c.applyChangesClick}" variant="brand" class="button-fixed"/>
+                        <lightning:button label="Clear" onclick="{!c.clearAllClick}" variant="destructive" class="button-fixed"/>
+                    </aura:set>
+                </aura:if -->
+                <!-- lightning:button label="Clone and Submit" onclick="{!c.cloneClicked}" variant="brand" class="button-fixed"/ -->
+                
+                <aura:if isTrue="{!v.hasrecs}">
+                    <lightning:button label="Re-establish Revenue Forecast" onclick="{!c.doStageReestablish}" variant="brand" class="button-fixed"/>
+                    <lightning:button label="Edit All" onclick="{!c.toggleEditAll}" variant="brand" class="button-fixed"/>
+                    <lightning:button label="Delete All" onclick="{!c.doStageDelete}" variant="destructive" class="button-fixed"/>
+                    <aura:set attribute="else">
+                        <lightning:button disabled="{! !v.stateTaken}" label="Establish Revenue Forecast" onclick="{!c.establishClicked}" variant="brand" class="button-fixed"/>
+                    </aura:set>
+                </aura:if>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

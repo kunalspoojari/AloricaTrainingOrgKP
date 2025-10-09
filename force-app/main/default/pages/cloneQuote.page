@@ -1,0 +1,75 @@
+<apex:page >
+    <!--apex:stylesheet value="{!$Resource['SBQQ__sb']}"/>
+    <SBQQ:theme />
+    <div id="sbCloneRelated" class="sb">
+        <div class="sbForm"><apex:form >
+            <SBQQ:pageHeader title="Related Items Preview" subtitle="{!SBQQ__Quote__c.Name}" iconName="sf-icon-copy resize">
+                <div class="sbBtns"-->
+					<!-- Clone Button -->
+					<!--apex:commandButton styleClass="sbBtn" value="Clone" id="Submit" onClick="cloneOnClick(this); return false;" />
+					<apex:actionFunction name="doClone" action="{!onClone}" /-->
+					<!-- Cancel Button -->
+                    <!--apex:commandButton styleClass="sbBtn" action="{!onCancel}" value="Cancel" />
+                </div>
+            </SBQQ:pageHeader>
+            <apex:pageMessages />
+            <apex:outputPanel rendered="{!lineCount!=0}"><div class="sbGroup">
+                <header class="sbPageBlockSection">
+                    <h3>
+                        <apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.label}"/>&nbsp;
+                    </h3>
+                    <div class="sbTool toggleButton"><i class="sf-icon-down" /></div>
+                </header>
+                <div class="tableContainer standard">
+                    <table class="sbTable">
+                        <thead>
+                            <tr>
+                                <th><apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.fields.Line_of_Business__c.label}"/></th>
+                                <th><apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.fields.SBQQ__Number__c.label}"/></th>
+                                <th><apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.fields.SBQQ__ListPrice__c.label}"/></th>
+                                <th><apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.fields.SBQQ__Quantity__c.label}"/></th>
+                                <th><apex:outputText value="{!$ObjectType.SBQQ__QuoteLine__c.fields.SBQQ__NetTotal__c.label}"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat var="ql" value="{!quoteLines}">
+                            <tr>
+                                <td><apex:outputField value="{!ql.Line_of_Business__c}"/></td>
+                                <td><apex:outputField value="{!ql.SBQQ__Number__c}"/></td>
+                                <td><apex:outputField value="{!ql.SBQQ__ListPrice__c}"/></td>
+                                <td><apex:outputField value="{!ql.SBQQ__Quantity__c}"/></td>
+                                <td><apex:outputField value="{!ql.SBQQ__NetTotal__c}"/></td>
+                            </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div></apex:outputPanel>
+        </apex:form></div>
+    </div>
+    <script>
+		/**
+		 * W-5219492 Disable commandButtons Clone after the first click to ensure that it is not clicked multiple times.
+		 * @param {Object} objCloneBtn - The Clone button
+		 */
+		function cloneOnClick (objCloneBtn) {
+			objCloneBtn.disabled = true;
+			objCloneBtn.value = 'Clone in progress...';
+			doClone();
+		}
+
+        var buttons = document.getElementsByClassName('toggleButton');
+        var tables = document.getElementsByClassName('tableContainer');
+
+        for (var i=0; i<buttons.length;i++) (function(i) {
+            buttons[i].onclick = function(){
+                if (tables[i].style.display=='block') {
+                    tables[i].style.display='none';
+                } else {
+                    tables[i].style.display = 'block';
+                }
+            }
+        })(i);
+
+    </script-->
+</apex:page>
