@@ -4,6 +4,10 @@ private class ClosedWonLostQuestionnaireHandlerTest {
 
     @TestSetup
     static void setup() {
+         //Enable Trigger (THIS IS WHAT YOU MISSED)
+         TriggerSwitch__c cs = TriggerSwitch__c.getInstance();
+         cs.Seller_Survey_Check__c = true;
+         upsert cs;
         Profile standardProfile = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
         List<User> testUsers = new List<User>();
         testUsers.add(new User(

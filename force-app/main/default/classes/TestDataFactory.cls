@@ -34,7 +34,6 @@ public class TestDataFactory {
         o.RecordTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get(recordTypeDevName).getRecordTypeId();
         return o;
     }
-    
     public static Opportunity mockPricingOpportunity(Id accountId, Id siteId) {    
         Opportunity o = mockOpportunity(accountId, siteId, TestDataFactory.Opp_RT_PricingCalculator, TestDataFactory.Opp_Stage_Qualified);
         return o;

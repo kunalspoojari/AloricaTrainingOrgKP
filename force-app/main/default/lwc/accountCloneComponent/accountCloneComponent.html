@@ -1,0 +1,209 @@
+<template>
+    <lightning-card title="Clone Account" icon-name="standard:account">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Saving..." size="medium"></lightning-spinner>
+        </template>
+        <div class="slds-p-around_medium">
+                <lightning-input
+                    type="checkbox"
+                    label="Also clone related Contacts"
+                    onchange={handleCloneContactsChange}>
+                </lightning-input>
+            
+            <br/>
+
+            <template if:true={accountData}>
+                <lightning-record-edit-form 
+                    object-api-name="Account" 
+                    recordid={recordId}
+                    onsuccess={handleSuccess}
+                    onsubmit={handleSubmit}>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="Account Information">Account Information</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Name" value={accountData.fields.Name.value}></lightning-input-field>
+                                <lightning-input-field field-name="Demandbase_Account_Name__c" value={accountData.fields.Demandbase_Account_Name__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="ParentId" value={accountData.fields.ParentId.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Type" value={accountData.fields.Type.value}></lightning-input-field>
+                                <lightning-input-field field-name="Inactive__c" value={accountData.fields.Inactive__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="Standard Classification">Standard Classification</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Demandbase_Industry__c" value={accountData.fields.Demandbase_Industry__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Primary_NAICS_Code__c" value={accountData.fields.Primary_NAICS_Code__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Sic" value={accountData.fields.Sic.value}></lightning-input-field>
+                                <lightning-input-field field-name="SicDesc" value={accountData.fields.SicDesc.value}></lightning-input-field>
+                                <lightning-input-field field-name="Primary_NAICS_Description__c" value={accountData.fields.Primary_NAICS_Description__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="engagio__qualification_score__c" value={accountData.fields.engagio__qualification_score__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="engagio__pipeline_predict_score__c" value={accountData.fields.engagio__pipeline_predict_score__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="engagio__Status__c" value={accountData.fields.engagio__Status__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="Alorica Classification">Alorica Classification</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Alorica_Industry__c" value={accountData.fields.Alorica_Industry__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Sub_Industry__c" value={accountData.fields.Sub_Industry__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Alorica_Vertical__c" value={accountData.fields.Alorica_Vertical__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Category__c" value={accountData.fields.Category__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="CPM_Zone__c" value={accountData.fields.CPM_Zone__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Strategic_Account__c" value={accountData.fields.Strategic_Account__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Target_Account__c" value={accountData.fields.Target_Account__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="Growth & Transformation Assignees">Growth & Transformation Assignees</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="OwnerId" value={accountData.fields.OwnerId.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_1__c" value={accountData.fields.Client_Account_Manager_1__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_2__c" value={accountData.fields.Client_Account_Manager_2__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_3__c" value={accountData.fields.Client_Account_Manager_3__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_4__c" value={accountData.fields.Client_Account_Manager_4__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_5__c" value={accountData.fields.Client_Account_Manager_5__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_6__c" value={accountData.fields.Client_Account_Manager_6__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Account_Manager_7__c" value={accountData.fields.Client_Account_Manager_7__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Sales_Executive__c" value={accountData.fields.Sales_Executive__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="CS_BDE_Assignee__c" value={accountData.fields.CS_BDE_Assignee__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Strategic_Account_Sales_Executive__c" value={accountData.fields.Strategic_Account_Sales_Executive__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Inside_Sales_Strategy__c" value={accountData.fields.Inside_Sales_Strategy__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="IT">IT</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Client_Technology_Manager__c" value={accountData.fields.Client_Technology_Manager__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Client_Technology_Manager_Secondary__c" value={accountData.fields.Client_Technology_Manager_Secondary__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="IT_Complexity__c" value={accountData.fields.IT_Complexity__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Support_Model__c" value={accountData.fields.Support_Model__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="IT">Company Overview</span>
+                        </h3>
+                    </div>
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-input-field field-name="IT_Complexity__c" value={accountData.fields.IT_Complexity__c.value}></lightning-input-field>
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="Growth & Transformation Assignees">Description Information</span>
+                        </h3>
+                    </div>    
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-layout multiple-rows="true">
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Year_Founded__c" value={accountData.fields.Year_Founded__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Ownership" value={accountData.fields.Ownership.value}></lightning-input-field>
+                                <lightning-input-field field-name="NumberOfEmployees" value={accountData.fields.NumberOfEmployees.value}></lightning-input-field>
+                                <lightning-input-field field-name="AnnualRevenue" value={accountData.fields.AnnualRevenue.value}></lightning-input-field>
+                                <lightning-input-field field-name="Fortune_Ranking__c" value={accountData.fields.Fortune_Ranking__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Outsourcing_Maturity__c" value={accountData.fields.Outsourcing_Maturity__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Company_Market_Maturity__c" value={accountData.fields.Company_Market_Maturity__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-input-field field-name="Phone" value={accountData.fields.Phone.value}></lightning-input-field>
+                                <lightning-input-field field-name="Website" value={accountData.fields.Website.value}></lightning-input-field>
+                                <lightning-input-field field-name="TickerSymbol" value={accountData.fields.TickerSymbol.value}></lightning-input-field>
+                                <lightning-input-field field-name="Twitter__c" value={accountData.fields.Twitter__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Facebook__c" value={accountData.fields.Facebook__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="LinkedIn__c" value={accountData.fields.LinkedIn__c.value}></lightning-input-field>
+                                <lightning-input-field field-name="Technology__c" value={accountData.fields.Technology__c.value}></lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>   
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="IT">Headquarters Address</span>
+                        </h3>
+                    </div>
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-input-field field-name="HQ_Street__c" value={accountData.fields.HQ_Street__c.value}></lightning-input-field>
+                        <lightning-input-field field-name="HQ_City__c" value={accountData.fields.HQ_City__c.value}></lightning-input-field>
+                        <lightning-input-field field-name="HQ_State__c" value={accountData.fields.HQ_State__c.value}></lightning-input-field>
+                        <lightning-input-field field-name="HQ_Country__c" value={accountData.fields.HQ_Country__c.value}></lightning-input-field>
+                    </div>
+                 </section>
+
+                 <section class="slds-section slds-is-open">
+                    <div class="slds-section__title">
+                        <h3 class="slds-section__title-action">
+                            <span class="slds-truncate" title="IT">System Information</span>
+                        </h3>
+                    </div>
+                    <div class="slds-section__content slds-p-around_medium">
+                        <lightning-input-field field-name="RecordTypeId" value={accountData.fields.RecordTypeId.value} disabled></lightning-input-field>
+                    </div>
+                 </section>
+
+                <lightning-button variant="brand" label="Save" onclick={handleCustomSubmit}></lightning-button>
+                </lightning-record-edit-form>
+            </template>
+        </div>
+    </lightning-card>
+</template>
