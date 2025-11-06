@@ -117,18 +117,4 @@ public class OpportunityHelper {
             }
         }
     }
-    public void handleSharingRefresh(Opportunity opp) {
-        // Query related questionnaires for this Opportunity (include OwnerId for sharing logic)
-        List<Closed_Won_Lost_Questionaire__c> relatedQuestionnaires = [
-            SELECT Id, OwnerId, Opportunity__c
-            FROM Closed_Won_Lost_Questionaire__c
-            WHERE Opportunity__c = :opp.Id
-        ];
-        
-        if (relatedQuestionnaires.isEmpty()) return;
-        
-        // Delegate to Questionnaire helper: Use non-null empty oldMap to force delete + reinsert
-        Map<Id, Closed_Won_Lost_Questionaire__c> dummyOldMap = new Map<Id, Closed_Won_Lost_Questionaire__c>();
-        ClosedWonLostQuestionnaireHandler.handleAfterUpdate(relatedQuestionnaires, dummyOldMap);
-    }
 }

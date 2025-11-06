@@ -27,13 +27,5 @@ public class OpportunityTriggerHandler {
             }
         }
     }
-    public static void handleAfterUpdate(List<Opportunity> newOpps, Map<Id, Opportunity> oldOpps) {
-        OpportunityHelper helper = new OpportunityHelper();
-        for (Opportunity newOpp : newOpps) {
-            Opportunity oldOpp = oldOpps.get(newOpp.Id);
-            if (newOpp.OwnerId != oldOpp.OwnerId || newOpp.CS_Assignee__c != oldOpp.CS_Assignee__c) {
-                helper.handleSharingRefresh(newOpp);
-            }
-        }
-    }
+   
 }
