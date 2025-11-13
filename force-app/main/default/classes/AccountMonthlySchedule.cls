@@ -5,13 +5,13 @@ global class AccountMonthlySchedule implements Schedulable {
         if (!Test.isRunningTest() && Date.today().day() != 1) {
             return;
         }
-
+        
         List<Account> accList = [
             SELECT Id, Name 
             FROM Account 
             WHERE Account_Name_Finance__c = NULL
         ];
-
+        system.debug('line 14' + accList);
         if (accList.isEmpty()) {
             return; // Nothing to send
         }
@@ -36,7 +36,7 @@ global class AccountMonthlySchedule implements Schedulable {
         tableHtml += '<p>Please update the Account Name Finance Field.</p><p>Thanks & Regards</p>';
 
         Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-        email.setToAddresses(new String[] {'Sivakumar.Muthuramalingam@alorica.com'}); // Change recipient
+        email.setToAddresses(new String[] {'kunal.poojari@alorica.com'}); // Change recipient
         email.setSubject('Accounts Missing Account Name (Finance) - Monthly Report');
         email.setOrgWideEmailAddressId([SELECT Id FROM OrgWideEmailAddress WHERE Address = 'aloricainternalsalesforcerequests@alorica.com' LIMIT 1].Id);
         email.setHtmlBody(tableHtml);

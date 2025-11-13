@@ -4,12 +4,13 @@
             <lightning-spinner alternative-text="Saving..." size="medium"></lightning-spinner>
         </template>
         <div class="slds-p-around_medium">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <strong style="margin-right: 8px;">Would you like to clone the Contacts related to this Account?</strong>
                 <lightning-input
                     type="checkbox"
-                    label="Also clone related Contacts"
                     onchange={handleCloneContactsChange}>
                 </lightning-input>
-            
+            </div>
             <br/>
 
             <template if:true={accountData}>
