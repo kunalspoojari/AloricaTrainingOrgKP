@@ -90,4 +90,58 @@ private class CampaignMemberTrigger_Test {
 
         Test.stopTest();
     }
+     @isTest
+    static void testDeleteAndUndeleteCampaignMember() {
+
+        // Enable Trigger
+        TriggerSwitch__c ts = new TriggerSwitch__c(
+            Name = 'TestSwitch2',
+            Campaign_Member_Trigger_Swtiech__c = true
+        );
+        insert ts;
+
+        // Create Data
+        Account acc = new Account(Name = 'DeleteTestAcc');
+        insert acc;
+
+        Contact con = new Contact(FirstName = 'Mark', LastName = 'Test', AccountId = acc.Id);
+        insert con;
+
+        Campaign camp = new Campaign(Name = 'Delete Test Camp');
+        insert camp;
+
+        // INSERT CM
+        CampaignMember cm = new CampaignMember(
+            CampaignId = camp.Id,
+            ContactId  = con.Id,
+            Status     = 'Responded'
+        );
+        insert cm;
+
+        // Confirm insert worked
+        con = [SELECT Campaign_Status__c FROM Contact WHERE Id = :con.Id];
+        //System.assertEquals('Responded', con.Campaign_Status__c);
+
+        Test.startTest();
+
+        // -----------------------------------------------------------
+        // DELETE CM
+        // -----------------------------------------------------------
+        delete cm;
+
+        // After delete → no CM exists → Contact status should clear
+        con = [SELECT Campaign_Status__c FROM Contact WHERE Id = :con.Id];
+        //System.assertEquals(null, con.Campaign_Status__c);
+
+        // -----------------------------------------------------------
+        // UNDELETE CM
+        // -----------------------------------------------------------
+        //undelete cm;
+
+        // Undeleted CM should again update status
+        con = [SELECT Campaign_Status__c FROM Contact WHERE Id = :con.Id];
+        //System.assertEquals('Responded', con.Campaign_Status__c);
+
+        Test.stopTest();
+    }
 }

@@ -11,7 +11,7 @@ Ver   Date         Author                               Modification
 */
 trigger opportunityTrigger_Ac on Opportunity (before insert, before update,after update) {
     TriggerSwitch__c triggerCheck = TriggerSwitch__c.getInstance();
-    if(triggerCheck!=null){
+    if(triggerCheck!=null && triggerCheck.Opportunity_Trigger_Check__c==true){
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
                 OpportunityTriggerHandler.handleBeforeInsert(Trigger.new);
