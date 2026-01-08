@@ -3,8 +3,9 @@ public class SendZeroTCVReminderTest {
 
     @testSetup
     static void setup() {
-        // Create a test user
+
         Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+
         User u = new User(
             FirstName = 'Test',
             LastName = 'Owner',
@@ -19,41 +20,46 @@ public class SendZeroTCVReminderTest {
         );
         insert u;
 
-        Account a = new Account(Name ='icrm testing acc');
+        Account a = new Account(Name = 'Test Account');
         insert a;
-        
-        Contact con = new Contact(FirstName = 'Test',LastName = 'Contact',Email = 'testcontact' + Math.abs(Crypto.getRandomInteger()) + '@example.com',AccountId = a.Id);
-        insert con;
-        
-        Opportunity opp = new Opportunity(
-            Name = 'Test Opportunity',
-            CloseDate = Date.today().addDays(10),
-            StageName = 'Qualified',
-            OwnerId = u.Id,GSTApprover__c = u.id, ECApprover__c = u.id, AccountId= a.Id,GeoApprover__c= u.id,
-            Business_Development_Assignee__c = u.id, Client_Contact__c = con.Id
+
+        Contact c = new Contact(
+            LastName = 'Contact',
+            Email = 'test' + System.currentTimeMillis() + '@example.com',
+            AccountId = a.Id
         );
+        insert c;
+
+Opportunity opp = new Opportunity( 
+    Name = 'Test Opportunity', 
+    CloseDate = Date.today().addDays(10), 
+    StageName = 'Qualified', 
+    OwnerId = u.Id,
+    GSTApprover__c = u.id, 
+    ECApprover__c = u.id, 
+    AccountId= a.Id,
+    GeoApprover__c= u.id, 
+    Business_Development_Assignee__c = u.id, 
+    Client_Contact__c = c.Id ); 
         insert opp;
-        opp.StageName = 'Qualified';
+        
+        opp.StageName = 'Qualified'; 
         update opp;
+
+        // 🔑 THIS is what drives Net_TCV_growth__c
         Model__c modelRec = new Model__c(
             Opportunity__c = opp.Id,
-            Model_Net_TCV_Growth__c = 100, // This gets ignored because Active = false
-            Active__c = false
+            Model_Net_TCV_Growth__c = 100,
+            Active__c = true
         );
         insert modelRec;
-        system.debug('NET TCV: '+opp.Net_TCV_growth__c);
-        system.debug('Stage: '+opp.StageName);
     }
 
     @isTest
-    static void testReminderEmail() {
+    static void testReminderEmailExecution() {
 
         Test.startTest();
-
-        // Call the schedulable class
-        SendZeroTCVReminder job = new SendZeroTCVReminder();
-        job.execute(null);
-
+        new SendZeroTCVReminder().execute(null);
         Test.stopTest();
 
     }

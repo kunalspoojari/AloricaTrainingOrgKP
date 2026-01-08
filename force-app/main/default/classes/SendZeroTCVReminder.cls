@@ -17,6 +17,7 @@ global class SendZeroTCVReminder implements Schedulable {
             if (opp.Owner.Email != null) {
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
                 email.setToAddresses(new String[] { opp.Owner.Email });
+                email.setCcAddresses(new String[] {'Vinay.J@alorica.com'});
                 email.setSubject(opp.Name + '\'s Net TCV is $0');
                 email.setHtmlBody('Dear ' + opp.Owner.Name + ',<br/><br/>' +
     'This deal owned by you is in Qualified+ stage. It is mandatory to enter the Revenue Model and Services at this stage. ' +

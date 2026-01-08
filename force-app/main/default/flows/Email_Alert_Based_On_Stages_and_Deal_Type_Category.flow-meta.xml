@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Copy_1_of_Send_Email_Action_1</name>
+        <label>Copy 1 of Send Email Action 1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recipientAddresses</name>
+            <value/>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>EmailAdd</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>OpportunityDetails</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>Please find the relevant client and opportunity information below:
+
+Opportunity Link: https://alorica.my.salesforce.com/{!$Record.Id}
+
+Opportunity Summary
+
+
+1. Opportunity Owner: {!Copy_1_of_Get_the_User_Record_whom_the_email_should_be_sent.Name}
+2. Opportunity Assignee: {!Copy_1_of_Get_User_Record_of_Opp_Assignee.Name}
+3. IT Assignee: {!Copy_1_of_Get_User_Id_of_IT_Assignee.Name}
+4. Opportunity Name: {!$Record.Name}
+5. Deal Type: {!$Record.Deal_Type__c}
+6. Stage: {!$Record.StageName}
+7. Probability (%){!$Record.Probability}%
+8. Close Date: {!$Record.CloseDate}
+9. Opportunity Net FTE (Growth): {!$Record.Net_FTE_growth__c}
+10. Opportunity Net IYR (Growth): {!$Record.Opportunity_Net_IYR_Growth__c}
+11. Opportunity Net ARR (Growth): {!$Record.Opportunity_ARR__c}
+12. Opportunity Net TCV (Growth): {!$Record.Opportunity_Net_TCV_Growth__c}
+13. Account Name: {!$Record.Account.Name}
+14. Service Lines: {!$Record.Service_Lines__c}
+15. Revenue Start: {!$Record.Revenue_StartDate__c}
+16. Description: {!$Record.Description}
+17. IT Solution Summary: {!$Record.IT_Solution_Summary__c}
+18. Recent Summary of Activity: {!$Record.Recent_Summary_of_Activity__c}
+19. Next Step: {!$Record.NextStep}
+20. Forecast Status: {!$Record.Forecast_Status__c}
+21. Is this an RFP?: {!$Record.Is_this_an_RFP__c}
+22. RFP Due Date: {!$Record.RFP_Due_Date__c}
+
+Thanks!!</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>2.0.1</versionString>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_Action_1</name>
+        <label>Send Email Action 1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recipientAddresses</name>
+            <value/>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>OpportunityDetails</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>Please find the relevant client and opportunity information below:
+
+Opportunity Link: https://alorica.my.salesforce.com/{!$Record.Id}
+
+Opportunity Summary
+
+1. Opportunity Owner: {!Get_the_User_Record_whom_the_email_should_be_sent.Name}
+2. Opportunity Assignee: {!Get_User_Record_of_Opp_Assignee.Name}
+3. IT Assignee: {!Get_User_Id_of_IT_Assignee.Name}
+4. Opportunity Name: {!$Record.Name}
+5. Deal Type: {!$Record.Deal_Type__c}
+6. Stage: {!$Record.StageName}
+7. Probability (%){!$Record.Probability}%
+8. Close Date: {!$Record.CloseDate}
+9. Opportunity Net FTE (Growth): {!$Record.Net_FTE_growth__c}
+10. Opportunity Net IYR (Growth): {!$Record.Opportunity_Net_IYR_Growth__c}
+11. Opportunity Net ARR (Growth): {!$Record.Opportunity_ARR__c}
+12. Opportunity Net TCV (Growth): {!$Record.Opportunity_Net_TCV_Growth__c}
+13. Account Name: {!$Record.Account.Name}
+14. Service Lines: {!$Record.Service_Lines__c}
+15. Revenue Start: {!$Record.Revenue_StartDate__c}
+16. Description: {!$Record.Description}
+17. IT Solution Summary: {!$Record.IT_Solution_Summary__c}
+18. Recent Summary of Activity: {!$Record.Recent_Summary_of_Activity__c}
+19. Next Step: {!$Record.NextStep}
+20. Forecast Status: {!$Record.Forecast_Status__c}
+21. Is this an RFP?: {!$Record.Is_this_an_RFP__c}
+22. RFP Due Date: {!$Record.RFP_Due_Date__c}
+
+Thanks!!</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>2.0.1</versionString>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Deal_Type_Category_is_New_Logo</name>
+        <label>Deal Type Category is &quot;New Logo&quot;</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Deal_Type_Category_is_New_Logo_Stage</name>
+            <conditionLogic>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Deal_Type_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New Logo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Prospect</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pricing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pricing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Verbal Win</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_the_User_Record_whom_the_email_should_be_sent</targetReference>
+            </connector>
+            <label>Deal Type Category is &quot;New Logo&quot;</label>
+        </rules>
+        <rules>
+            <name>Deal_Type_Category_is_New_Logo_or_NLOB</name>
+            <conditionLogic>(1 OR 2) AND (3 AND 4) AND 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Deal_Type_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New Logo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Deal_Type_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NLOB</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pricing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Net_TCV_Growth__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Get_the_User_Record_whom_the_email_should_be_sent</targetReference>
+            </connector>
+            <label>Deal Type Category is &quot;New Logo&quot; or &quot;NLOB&quot;</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Email ALert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Alert Based On Stages and Deal Type Category</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Copy_1_of_Get_the_User_Record_whom_the_email_should_be_sent</name>
+        <label>Copy 1 of Get the User Record whom the email should be sent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Get_User_Record_of_Opp_Assignee</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_1_of_Get_User_Id_of_IT_Assignee</name>
+        <label>Copy 1 of Get User Id of IT Assignee</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Send_Email_Action_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.IT_Assignee__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Copy_1_of_Get_User_Record_of_Opp_Assignee</name>
+        <label>Copy 1 of Get User Record of Opp Assignee</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Copy_1_of_Get_User_Id_of_IT_Assignee</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CS_Assignee__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_the_User_Record_whom_the_email_should_be_sent</name>
+        <label>Get the User Record whom the email should be sent</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_User_Record_of_Opp_Assignee</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_Id_of_IT_Assignee</name>
+        <label>Get User Id of IT Assignee</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email_Action_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.IT_Assignee__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_Record_of_Opp_Assignee</name>
+        <label>Get User Record of Opp Assignee</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_User_Id_of_IT_Assignee</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CS_Assignee__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Deal_Type_Category_is_New_Logo</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailAdd</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;kunal.poojari@alorica.com&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>OpportunityDetails</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Related to Opportunity Details&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

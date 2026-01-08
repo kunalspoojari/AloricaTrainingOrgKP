@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Account_Description</name>
+        <label>Check Account Description</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Account_Description</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Description</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Strategic_Account_Plan</targetReference>
+            </connector>
+            <label>Account Description</label>
+        </rules>
+    </decisions>
+    <description>Updates the Strategic Account Plan&apos;s &quot;Account Description&quot; field when its parent account&apos;s description changes.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>accountLink</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_510}, FIND(&apos;/services&apos;, {!$Api.Partner_Server_URL_510})) &amp; &quot;/lightning/r/Account/&quot; &amp; {!$Record.Id} &amp; &quot;/view&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>ccEmails</name>
+        <dataType>String</dataType>
+        <expression>&quot;Sivakumar.Muthuramalingam@alorica.com&quot; &amp; &quot;, &quot; &amp; &quot;mike.carletta@alorica.com&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>dynamicSubject</name>
+        <dataType>String</dataType>
+        <expression>&quot;Account Assignment Update Completed | &quot; &amp; {!$Record.Name}</expression>
+    </formulas>
+    <formulas>
+        <name>recipientEmail</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record__Prior.OwnerId} != {!$Record.OwnerId},
+   {!$Record__Prior.Owner.Email} &amp; &quot;,&quot; &amp; {!$Record.Owner.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Client_Account_Manager_1__r.Id} != {!$Record.Client_Account_Manager_1__r.Id},
+   {!$Record__Prior.Client_Account_Manager_1__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Client_Account_Manager_1__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Client_Account_Manager_2__r.Id} != {!$Record.Client_Account_Manager_2__r.Id},
+   {!$Record__Prior.Client_Account_Manager_2__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Client_Account_Manager_2__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Client_Account_Manager_3__r.Id} != {!$Record.Client_Account_Manager_3__r.Id},
+   {!$Record__Prior.Client_Account_Manager_3__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Client_Account_Manager_3__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Client_Account_Manager_4__r.Id} != {!$Record.Client_Account_Manager_4__r.Id},
+   {!$Record__Prior.Client_Account_Manager_4__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Client_Account_Manager_4__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Client_Account_Manager_5__r.Id} != {!$Record.Client_Account_Manager_5__r.Id},
+   {!$Record__Prior.Client_Account_Manager_5__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Client_Account_Manager_5__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Sales_Executive__r.Id} != {!$Record.Sales_Executive__r.Id},
+   {!$Record__Prior.Sales_Executive__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Sales_Executive__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.CS_BDE_Assignee__r.Id} != {!$Record.CS_BDE_Assignee__r.Id},
+   {!$Record__Prior.CS_BDE_Assignee__r.Email} &amp; &quot;,&quot; &amp; {!$Record.CS_BDE_Assignee__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+) &amp;
+IF(
+   {!$Record__Prior.Strategic_Account_Sales_Executive__r.Id} != {!$Record.Strategic_Account_Sales_Executive__r.Id},
+   {!$Record__Prior.Strategic_Account_Sales_Executive__r.Email} &amp; &quot;,&quot; &amp; {!$Record.Strategic_Account_Sales_Executive__r.Email} &amp; &quot;,&quot;,
+   &quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>Account - Update Account Plan Description on Description Change {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Update Account Plan Description on Change</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Strategic_Account_Plan</name>
+        <label>Update Strategic Account Plan</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Account_Description__c</field>
+            <value>
+                <elementReference>$Record.Description</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Strategic_Account_Plan__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Account_Description</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>emailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;An Account Assignment Change Request for {!$Record.Name} has been successfully processed. You can now review the updated details by visiting the link below:&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;{!accountLink}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;{!accountLink}&lt;/a&gt;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

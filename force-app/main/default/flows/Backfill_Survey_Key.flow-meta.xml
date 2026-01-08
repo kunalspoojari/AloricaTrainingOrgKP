@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_Unique_Key</name>
+        <label>Set Unique Key</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Surveys.Unique_Opportunity_Key__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>f</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Surveys</targetReference>
+        </connector>
+    </assignments>
+    <description>Populate Unique Opportunity Key for existing Seller Survey records.</description>
+    <environments>Default</environments>
+    <interviewLabel>Backfill Survey Key {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Backfill Survey Key</label>
+    <loops>
+        <name>Loop_Surveys</name>
+        <label>Loop Surveys</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Surveys_Missing_Key</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Set_Unique_Key</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Surveys_Missing_Key</name>
+        <label>Get Surveys Missing Key.</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Surveys</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Unique_Opportunity_Key__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Closed_Won_Lost_Questionaire__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Surveys_Missing_Key</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>varSurvey</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Closed_Won_Lost_Questionaire__c</objectType>
+    </variables>
+</Flow>

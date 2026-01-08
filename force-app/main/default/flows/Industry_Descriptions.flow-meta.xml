@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Industry</name>
+        <label>Check Industry</label>
+        <locationX>7442</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Energy_Utilities</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Energy &amp; Utilities</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Energy_Utilities</targetReference>
+            </connector>
+            <label>Energy &amp; Utilities</label>
+        </rules>
+        <rules>
+            <name>Financial_Services</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Financial Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Financial_Services</targetReference>
+            </connector>
+            <label>Financial Services</label>
+        </rules>
+        <rules>
+            <name>Government</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Government</targetReference>
+            </connector>
+            <label>Government</label>
+        </rules>
+        <rules>
+            <name>Healthcare</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Healthcare</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Healthcare</targetReference>
+            </connector>
+            <label>Healthcare</label>
+        </rules>
+        <rules>
+            <name>Manufacturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Manufacturing</targetReference>
+            </connector>
+            <label>Manufacturing</label>
+        </rules>
+        <rules>
+            <name>Other</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Other</targetReference>
+            </connector>
+            <label>Other</label>
+        </rules>
+        <rules>
+            <name>Retail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Retail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Retail_Desc</targetReference>
+            </connector>
+            <label>Retail</label>
+        </rules>
+        <rules>
+            <name>Telecoms_Media</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Telecoms &amp; Media</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Telecoms_Media</targetReference>
+            </connector>
+            <label>Telecoms &amp; Media</label>
+        </rules>
+        <rules>
+            <name>Transportation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Transportation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Transportation</targetReference>
+            </connector>
+            <label>Transportation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub</name>
+        <label>Sub Hospitality &amp; Travel Services</label>
+        <locationX>12986</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Travel_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Travel Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Travel_Services_Desc</targetReference>
+            </connector>
+            <label>Travel Services</label>
+        </rules>
+        <rules>
+            <name>Wholesale</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Wholesale</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wholesale_Desc</targetReference>
+            </connector>
+            <label>Wholesale</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Banking</name>
+        <label>Sub Banking</label>
+        <locationX>1106</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Retail_Commercial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Retail &amp; Commercial</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Retail_Commercial_Desc</targetReference>
+            </connector>
+            <label>Retail &amp; Commercial</label>
+        </rules>
+        <rules>
+            <name>Capital_Markets</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Capital Markets</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Capital_Markets_Desc</targetReference>
+            </connector>
+            <label>Capital Markets</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_CPG</name>
+        <label>Sub CPG</label>
+        <locationX>5594</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Food_Beverage_Tobacco</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Food, Beverage, &amp; Tobacco</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Food_Beverage_Tobacco_Desc</targetReference>
+            </connector>
+            <label>Food, Beverage, &amp; Tobacco</label>
+        </rules>
+        <rules>
+            <name>Consumer_electronics_electrical_products</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Consumer Electronics &amp; Electrical products</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Consumer_electronics_electrical_products_Desc</targetReference>
+            </connector>
+            <label>Consumer electronics &amp; electrical products</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Energy_Utilities</name>
+        <label>Sub Energy &amp; Utilities</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Energy</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Energy</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Energy_Desc</targetReference>
+            </connector>
+            <label>Energy</label>
+        </rules>
+        <rules>
+            <name>Utilities</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Utilities</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Utilities_Desc</targetReference>
+            </connector>
+            <label>Utilities</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Financial_Services</name>
+        <label>Sub Financial Services</label>
+        <locationX>1766</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Banking</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Banking</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Banking</targetReference>
+            </connector>
+            <label>Banking</label>
+        </rules>
+        <rules>
+            <name>Insurance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Insurance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Insurance</targetReference>
+            </connector>
+            <label>Insurance</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Government</name>
+        <label>Sub Government</label>
+        <locationX>3218</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>State_Local</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>State &amp; Local</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>State_Local_Desc</targetReference>
+            </connector>
+            <label>State &amp; Local</label>
+        </rules>
+        <rules>
+            <name>Federal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Federal</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Federal_Desc</targetReference>
+            </connector>
+            <label>Federal</label>
+        </rules>
+        <rules>
+            <name>Defense</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Defense</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Defense_Desc</targetReference>
+            </connector>
+            <label>Defense</label>
+        </rules>
+        <rules>
+            <name>Education</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Education</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Education_Desc</targetReference>
+            </connector>
+            <label>Education</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Healthcare</name>
+        <label>Sub Healthcare</label>
+        <locationX>4274</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Health_Insurance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Health Insurance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Healthcare_Insurance_Desc</targetReference>
+            </connector>
+            <label>Health Insurance</label>
+        </rules>
+        <rules>
+            <name>Healthcare_Provider</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Healthcare Provider</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Healthcare_Provider_Desc</targetReference>
+            </connector>
+            <label>Healthcare Provider</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Insurance</name>
+        <label>Sub Insurance</label>
+        <locationX>1898</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Life</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Life</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Life_Desc</targetReference>
+            </connector>
+            <label>Life</label>
+        </rules>
+        <rules>
+            <name>P_C</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>P&amp;C</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>P_C_Desc</targetReference>
+            </connector>
+            <label>P&amp;C</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Manufacturing</name>
+        <label>Sub Manufacturing</label>
+        <locationX>6650</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Automotive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Automotive</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Automotive_Desc</targetReference>
+            </connector>
+            <label>Automotive</label>
+        </rules>
+        <rules>
+            <name>Chemicals</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Chemicals</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Chemicals_Desc</targetReference>
+            </connector>
+            <label>Chemicals</label>
+        </rules>
+        <rules>
+            <name>CPG</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CPG</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_CPG</targetReference>
+            </connector>
+            <label>CPG</label>
+        </rules>
+        <rules>
+            <name>Pharmaceuticals</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pharmaceuticals</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pharmaceuticals_Desc</targetReference>
+            </connector>
+            <label>Pharmaceuticals</label>
+        </rules>
+        <rules>
+            <name>High_Tech</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>High-Tech</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>High_Tech_Desc</targetReference>
+            </connector>
+            <label>High-Tech</label>
+        </rules>
+        <rules>
+            <name>Other_Manu</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Other_Manu</targetReference>
+            </connector>
+            <label>Other Manu</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Non_Transport_related</name>
+        <label>Sub Non Transport related</label>
+        <locationX>7310</locationX>
+        <locationY>611</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Other_Process_Manufacturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other Process Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Other_Process_Manufacturing_Desc</targetReference>
+            </connector>
+            <label>Other Process Manufacturing</label>
+        </rules>
+        <rules>
+            <name>Engineering</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Engineering</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Engineering_Desc</targetReference>
+            </connector>
+            <label>Engineering</label>
+        </rules>
+        <rules>
+            <name>Other_Discrete_Manufacturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other Discrete Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Other_Discrete_Manufacturing_Desc</targetReference>
+            </connector>
+            <label>Other Discrete Manufacturing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Other</name>
+        <label>Sub Other</label>
+        <locationX>10016</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Professional_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Professional Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Professional_Services</targetReference>
+            </connector>
+            <label>Professional Services</label>
+        </rules>
+        <rules>
+            <name>Other_Srvices</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other_Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Other_Services</targetReference>
+            </connector>
+            <label>Other Services</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Other_Manu</name>
+        <label>Sub Other Manu</label>
+        <locationX>7442</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Aerospace</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Aerospace</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Aerospace_Desc</targetReference>
+            </connector>
+            <label>Aerospace</label>
+        </rules>
+        <rules>
+            <name>Non_Transport_Related_Manufacturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Non Transport Related Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Non_Transport_related</targetReference>
+            </connector>
+            <label>Non Transport Related Manufacturing</label>
+        </rules>
+        <rules>
+            <name>Other_Transportation_Related_Manufacturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other Transportation-Related Manufacturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Other_transportation_related_manufacturing_Desc</targetReference>
+            </connector>
+            <label>Other Transportation-Related Manufacturing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Other_Services</name>
+        <label>Sub Other Services</label>
+        <locationX>10082</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Agriculture</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Agriculture</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Agriculture_Desc</targetReference>
+            </connector>
+            <label>Agriculture</label>
+        </rules>
+        <rules>
+            <name>Mining</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mining</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mining_Desc</targetReference>
+            </connector>
+            <label>Mining</label>
+        </rules>
+        <rules>
+            <name>Construction</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Construction</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Construction_Desc</targetReference>
+            </connector>
+            <label>Construction</label>
+        </rules>
+        <rules>
+            <name>Repair_Maintenance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Repair &amp; Maintenance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Repair_and_Maintenance_Desc</targetReference>
+            </connector>
+            <label>Repair &amp; Maintenance</label>
+        </rules>
+        <rules>
+            <name>Charities_Non_profits</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Charities &amp; Non-profits</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Charities_Non_profits_Desc</targetReference>
+            </connector>
+            <label>Charities &amp; Non-profits</label>
+        </rules>
+        <rules>
+            <name>Personal_and_Laundry_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Personal and Laundry Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Personal_and_Laundry_Services_Desc</targetReference>
+            </connector>
+            <label>Personal and Laundry Services</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Other_Transpo</name>
+        <label>Sub Other Transpo</label>
+        <locationX>13778</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Passenger_Transportation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Passenger Transportation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Passenger_Transpo_Desc</targetReference>
+            </connector>
+            <label>Passenger Transportation</label>
+        </rules>
+        <rules>
+            <name>Transport_Authorities_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Transport Authorities &amp; Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Transport_Authorities_Services_Desc</targetReference>
+            </connector>
+            <label>Transport Authorities &amp; Services</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Professional_Services</name>
+        <label>Sub Professional Services</label>
+        <locationX>8894</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Business_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry_2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Business Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Business_Services_Desc</targetReference>
+            </connector>
+            <label>Business Services</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Telecoms_Media</name>
+        <label>Sub Telecoms &amp; Media</label>
+        <locationX>11930</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Telecome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Telecoms</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Telecoms_Desc</targetReference>
+            </connector>
+            <label>Telecome</label>
+        </rules>
+        <rules>
+            <name>Media</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Media</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Media_Desc</targetReference>
+            </connector>
+            <label>Media</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Sub_Transportation</name>
+        <label>Sub Transportation</label>
+        <locationX>13382</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Freight_Transportation_Logistics</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Freight Transportation &amp; Logistics</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Freight_Transportation_Logistics_Desc</targetReference>
+            </connector>
+            <label>Freight Transportation &amp; Logistics</label>
+        </rules>
+        <rules>
+            <name>Hospitality_Travel_Services</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Hospitality &amp; Travel Services</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub</targetReference>
+            </connector>
+            <label>Hospitality &amp; Travel Services</label>
+        </rules>
+        <rules>
+            <name>Other_Transportation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sub_Industry__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Other Transportation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sub_Other_Transpo</targetReference>
+            </connector>
+            <label>Other Transportation</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Industry Descriptions {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Industry Descriptions</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Aerospace_Desc</name>
+        <label>Aerospace Desc</label>
+        <locationX>6650</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Aerospace product &amp; component manufacturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Agriculture_Desc</name>
+        <label>Agriculture Desc</label>
+        <locationX>9290</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Agriculture, Forestry, Fishing and Hunting</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Automotive_Desc</name>
+        <label>Automotive Desc</label>
+        <locationX>4802</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Automotive vehicle and parts manufacture</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Business_Services_Desc</name>
+        <label>Business Services Desc</label>
+        <locationX>8762</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Real Estate; Commercial and Industrial Machinery and Equipment Rental and Leasing; Lessors of Nonfinancial Intangible Assets (except Copyrighted Works); Professional, Scientific, and Technical Services; Management of Companies and Enterprises; Administrative and Support and Waste Management and Remediation Services</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Capital_Markets_Desc</name>
+        <label>Capital Markets Desc</label>
+        <locationX>1106</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Capital markets including investment banks, Central banks and monetary authorities</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Charities_Non_profits_Desc</name>
+        <label>Charities &amp; Non-profits Desc</label>
+        <locationX>10346</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Religious, Grantmaking, Civic, Professional, and Similar Organizations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Chemicals_Desc</name>
+        <label>Chemicals Desc</label>
+        <locationX>5066</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Production of chemicals</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Construction_Desc</name>
+        <label>Construction Desc</label>
+        <locationX>9818</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Construction</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Consumer_electronics_electrical_products_Desc</name>
+        <label>Consumer electronics &amp; electrical products Desc</label>
+        <locationX>5594</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Manufacture of household electrical and electronic goods</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Defense_Desc</name>
+        <label>Defense Desc</label>
+        <locationX>3218</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Departments of Defense and armed forces including army, navy and airforce</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Education_Desc</name>
+        <label>Education Desc</label>
+        <locationX>3482</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Educational Services including public and private sector primary, secondary and tertiary education</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Energy_Desc</name>
+        <label>Energy Desc</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Power generation including oil &amp; gas extraction</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Engineering_Desc</name>
+        <label>Engineering Desc</label>
+        <locationX>7178</locationX>
+        <locationY>719</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Manufacture of &quot;metal products&quot; not covered elsewhere</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Federal_Desc</name>
+        <label>Federal Desc</label>
+        <locationX>2954</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>All Federal and Central Government bodies including all departments and agencies thereof</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Food_Beverage_Tobacco_Desc</name>
+        <label>Food, Beverage, &amp; Tobacco Desc</label>
+        <locationX>5330</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Production of food, drink &amp; tobacco</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Freight_Transportation_Logistics_Desc</name>
+        <label>Freight Transportation/Logistics Desc</label>
+        <locationX>12458</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Deep Sea Freight Transportation; Coastal and Great Lakes Freight Transportation; Deep Sea Freight Transportation; Inland Water Freight Transportation; Truck Transportation; Pipeline Transportation; Postal Service; Couriers and Messengers; Warehousing and Storage</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Healthcare_Insurance_Desc</name>
+        <label>Healthcare Insurance Desc</label>
+        <locationX>4010</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Private sector healthcare payers and insurers</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Healthcare_Provider_Desc</name>
+        <label>Healthcare Provider Desc</label>
+        <locationX>4274</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Providers of healthcare including physicians practices, and hospitals</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>High_Tech_Desc</name>
+        <label>High-Tech Desc</label>
+        <locationX>6386</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Computer, phone, semiconductor manufacturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Life_Desc</name>
+        <label>Life Desc</label>
+        <locationX>1634</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Life, pensions, and annuities carriers or producers</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Media_Desc</name>
+        <label>Media Desc</label>
+        <locationX>11930</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Printing and Related Support Activities; Newspaper, Periodical, Book, and Directory Publishers; Motion Picture and Sound Recording Industries; Broadcasting (except Internet), gambling, video games</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Mining_Desc</name>
+        <label>Mining Desc</label>
+        <locationX>9554</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Mining (except Oil &amp; Gas); Support Activities for Mining (except Drilling Oil &amp; Gas Wells)</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Other_Discrete_Manufacturing_Desc</name>
+        <label>Other Discrete Manufacturing Desc</label>
+        <locationX>7442</locationX>
+        <locationY>719</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Miscellaneous Manufacturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Other_Process_Manufacturing_Desc</name>
+        <label>Other Process Manufacturing Desc</label>
+        <locationX>6914</locationX>
+        <locationY>719</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Textile Mills; Textile Product Mills; Apparel Manufacturing; Leather &amp; Allied Product Manufacturing; Wood Product Manufacturing; Paper Manufacturing; Plastics &amp; Rubber Products Manufacturing; Nonmetallic Mineral Product Manufacturing; Furniture and Related Product Manufacturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Other_transportation_related_manufacturing_Desc</name>
+        <label>Other transportation-related manufacturing Desc</label>
+        <locationX>7970</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Railroad Rolling Stock Manufacturing; Ship and Boat Building; Other Transportation Equipment Manufacturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>P_C_Desc</name>
+        <label>P&amp;C Desc</label>
+        <locationX>1898</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Property &amp; casualty insurance carriers covering insurance for areas such as property, auto etc.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Passenger_Transpo_Desc</name>
+        <label>Passenger Transpo Desc</label>
+        <locationX>13514</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Air Transportation; Rail Transportation; Water Transportation; Transit and Ground Passenger Transportation; Scenic and Sightseeing Transportation; Tour Operators</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Personal_and_Laundry_Services_Desc</name>
+        <label>Personal and Laundry Services Desc</label>
+        <locationX>10610</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>- Personal and Laundry Services</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Pharmaceuticals_Desc</name>
+        <label>Pharmaceuticals Desc</label>
+        <locationX>6122</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>- Pharmaceuticals</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Repair_and_Maintenance_Desc</name>
+        <label>Repair and Maintenance Desc</label>
+        <locationX>10082</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Repair and Maintenance</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Retail_Commercial_Desc</name>
+        <label>Retail &amp; Commercial Desc</label>
+        <locationX>842</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Retail and commercial banks</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Retail_Desc</name>
+        <label>Retail Desc</label>
+        <locationX>11402</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Retail including leisure activities and restaurants</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>State_Local_Desc</name>
+        <label>State &amp; Local Desc</label>
+        <locationX>2690</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>All state and local government bodies including state administrative bodies, local authorities, and cities</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Telecoms_Desc</name>
+        <label>Telecoms Desc</label>
+        <locationX>11666</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Telecoms operators covering provision of landline, mobile, broadband &amp; cable services</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Transport_Authorities_Services_Desc</name>
+        <label>Transport Authorities &amp; Services Desc</label>
+        <locationX>13778</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Support Activities for Transportation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Travel_Services_Desc</name>
+        <label>Travel Services Desc</label>
+        <locationX>12722</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Hotels and travel accommodation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Utilities_Desc</name>
+        <label>Utilities Desc</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Distribution of electricity, gas, and water and sewage</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Wholesale_Desc</name>
+        <label>Wholesale Desc</label>
+        <locationX>12986</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>General_Description__c</field>
+            <value>
+                <stringValue>Wholesale Trade</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>7316</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Industry</targetReference>
+        </connector>
+        <object>Industry__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
