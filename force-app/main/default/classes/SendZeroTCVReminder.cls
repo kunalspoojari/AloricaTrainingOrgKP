@@ -10,6 +10,11 @@ global class SendZeroTCVReminder implements Schedulable {
               AND Net_TCV_growth__c = 0
               AND IsClosed = FALSE
         ];
+        
+        // Fetch Org-Wide Email Address
+        OrgWideEmailAddress owea = [SELECT Id FROM OrgWideEmailAddress
+            WHERE Address = 'sivakumar.muthuramalingam@alorica.com' LIMIT 1
+        ];
 
         List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
@@ -19,6 +24,7 @@ global class SendZeroTCVReminder implements Schedulable {
                 email.setToAddresses(new String[] { opp.Owner.Email });
                 email.setCcAddresses(new String[] {'Vinay.J@alorica.com'});
                 email.setSubject(opp.Name + '\'s Net TCV is $0');
+                email.setOrgWideEmailAddressId(owea.Id);
                 email.setHtmlBody('Dear ' + opp.Owner.Name + ',<br/><br/>' +
     'This deal owned by you is in Qualified+ stage. It is mandatory to enter the Revenue Model and Services at this stage. ' +
     'Please review and enter the Revenue Model & other necessary details for this deal.<br/><br/>' +
